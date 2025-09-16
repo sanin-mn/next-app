@@ -15,7 +15,7 @@ export default function ProtectedRoute({ children }) {
   }, [user, router]);
 
   if (!user) {
-    return null; // or a loading spinner
+    return null; 
   }
 
   return <>{children}</>;

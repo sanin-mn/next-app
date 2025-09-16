@@ -18,7 +18,6 @@ export default function LoginPage() {
     setError('');
     setLoading(true);
 
-    // Create a URL-encoded form data object
     const formData = new URLSearchParams();
     formData.append('username', username);
     formData.append('password', password);
@@ -26,9 +25,7 @@ export default function LoginPage() {
     try {
       const res = await fetch('/api/auth/login.php', {
         method: 'POST',
-        // Set the Content-Type header to URL-encoded
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        // Send the URL-encoded string
         body: formData.toString(),
       });
 
@@ -36,7 +33,6 @@ export default function LoginPage() {
       if (res.ok) {
         login(data.token);
       } else {
-        // The API sends an "error" field for invalid credentials
         setError(data.error || 'Login failed. Please check your credentials.');
       }
     } catch (err) {

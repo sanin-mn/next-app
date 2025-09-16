@@ -44,7 +44,6 @@ const handleCheckout = async () => {
   setCheckoutLoading(true);
   setCheckoutError(null);
 
-  // The API likely expects URL-encoded form data, not JSON
   const formData = new URLSearchParams();
   formData.append('address', '123 Main St, Anytown, USA');
   formData.append('latitude', '40.712776');
@@ -53,19 +52,17 @@ const handleCheckout = async () => {
   try {
     const res = await fetch('/api/checkout/checkout.php', {
       method: 'POST',
-      // Change Content-Type to match the new body format
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': `Bearer ${token}`,
       },
-      // Send the URL-encoded string
       body: formData.toString(),
     });
 
     const data = await res.json();
     if (res.ok) {
       alert('Purchase completed successfully!');
-      router.push('/orders'); // Navigate to the orders page after a successful checkout
+      router.push('/orders'); 
     } else {
       setCheckoutError(data.error || data.message || 'Checkout failed.');
     }

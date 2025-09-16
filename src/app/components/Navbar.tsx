@@ -7,7 +7,7 @@ export default function Navbar() {
   const { user, logout } = useAuth();
 
   return (
-    <nav className="bg-blue-600 p-4 text-white flex justify-between">
+    <nav className="bg-gray-800 p-4 text-white flex justify-between">
       <div className="flex space-x-4">
         <Link href="/">
           <div className="hover:underline">Products</div>

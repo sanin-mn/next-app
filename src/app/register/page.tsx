@@ -17,7 +17,6 @@ export default function RegisterPage() {
     setError('');
     setLoading(true);
 
-    // This is the updated section to send data as URL-encoded form data
     const formData = new URLSearchParams();
     formData.append('username', username);
     formData.append('email', email);
@@ -26,9 +25,7 @@ export default function RegisterPage() {
     try {
       const res = await fetch('/api/auth/register.php', {
         method: 'POST',
-        // Change Content-Type to match the new body format
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        // Send the URL-encoded string
         body: formData.toString(),
       });
 
@@ -37,7 +34,7 @@ export default function RegisterPage() {
         alert('Registration successful! Please log in.');
         router.push('/login');
       } else {
-        // The API sends an error field, e.g., "Username or email already exists"
+        
         setError(data.error || 'Registration failed. Please check your data.');
       }
     } catch (err) {
