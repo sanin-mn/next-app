@@ -2,7 +2,7 @@ import AddToCartButton from '../../components/AddToCartButton';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
-async function getProductDetails(id) {
+async function getProductDetails(id: any) {
     
   const res = await fetch(`${API_BASE_URL}/api/products/details.php?id=${id}`);
   

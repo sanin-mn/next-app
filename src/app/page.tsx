@@ -9,7 +9,7 @@ async function getProducts() {
 }
 
 export default async function HomePage() {
-  const { products } = await getProducts();
+  const { products = [] } = await getProducts();
 
   return (
     <div className="p-8">
